@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp">
+
+    <TextView
+        android:id="@+id/txtUserSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/background_send_message"
+        android:backgroundTint="#0091EA"
+        android:paddingStart="12dp"
+        android:paddingTop="5dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="5dp"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+
+    <TextView
+        android:visibility="gone"
+        android:id="@+id/txtTimeSendMessage"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="24dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/txtUserSendMessage"
+        android:background="@android:color/transparent"
+        android:textSize="14sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

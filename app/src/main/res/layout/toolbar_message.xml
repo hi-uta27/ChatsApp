@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/imgArrowBackToolBarMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_arrow_back" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:background="@drawable/bo_tron_item_100"
+        android:id="@+id/imgIconFriendToolbarMessage"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:layout_toEndOf="@id/imgArrowBackToolBarMessage"
+        android:src="@drawable/user_default" />
+
+    <TextView
+        android:textStyle="bold"
+        android:id="@+id/txtNameFriendToolbarMessage"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/imgIconFriendToolbarMessage"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        tools:ignore="TextViewEdits" />
+
+    <ImageView
+        android:id="@+id/imgInformationActionBarMessage"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:src="@drawable/ic_information" />
+
+    <ImageView
+        android:id="@+id/imgVideoActionBarMessage"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:layout_toStartOf="@+id/imgInformationActionBarMessage"
+        android:src="@drawable/ic_video" />
+
+    <ImageView
+        android:id="@+id/imgCallActionBarMessage"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:layout_toStartOf="@+id/imgVideoActionBarMessage"
+        android:src="@drawable/ic_phone" />
+</RelativeLayout>

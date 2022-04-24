@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "807902124620",
+    "project_id": "chatappttcn",
+    "storage_bucket": "chatappttcn.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:807902124620:android:b1f750997c9e187905b2e9",
+        "android_client_info": {
+          "package_name": "com.tavanhieu.chatapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "807902124620-udpa7o5dasut64uqqgov5svdfdfblpce.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA6klQiMWei-1Se-YzUesI0FFSdnWonn1A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "807902124620-udpa7o5dasut64uqqgov5svdfdfblpce.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

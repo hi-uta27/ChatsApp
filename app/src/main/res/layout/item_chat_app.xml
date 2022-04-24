@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/layoutItemChatAppMain">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:background="@drawable/bo_tron_item_100"
+        android:id="@+id/imgUserItemChatApp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="12dp"
+        android:layout_marginBottom="12dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/user_default" />
+
+    <View
+        android:id="@+id/viewStatusUserItemChatApp"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="45dp"
+        android:layout_marginTop="45dp"
+        android:background="@drawable/bo_tron_item_20"
+        android:backgroundTint="#63FF00"
+        android:backgroundTintMode="multiply" />
+
+    <TextView
+        android:id="@+id/txtUserNameItemChatApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="50dp"
+        android:layout_toEndOf="@id/imgUserItemChatApp"
+        android:inputType="text"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        tools:ignore="TextViewEdits" />
+
+    <TextView
+        android:id="@+id/txtContentMessItemChatApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtUserNameItemChatApp"
+        android:layout_toStartOf="@+id/txtTimeItemChatApp"
+        android:layout_toEndOf="@id/imgUserItemChatApp"
+        android:inputType="text"
+        android:textColor="#6C6C6C"
+        android:textSize="14sp"
+        tools:ignore="TextViewEdits"/>
+
+    <TextView
+        android:id="@+id/txtTimeItemChatApp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:textColor="#6C6C6C"
+        android:textSize="14sp"
+        android:layout_centerVertical="true"/>
+
+</RelativeLayout>

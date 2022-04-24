@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:layout_centerVertical="true"
+        android:id="@+id/imgArrowBackToolBarCaNhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/ic_arrow_back" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:text="Thông tin cá nhân"
+        android:textColor="@color/black"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/imgArrowBackToolBarCaNhan"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginEnd="12dp"
+        android:background="#D8D8D8" />
+
+</RelativeLayout>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <include
+        android:id="@+id/toolbarForgetPass"
+        layout="@layout/toolbar_forget_pass" />
+
+    <TextView
+        android:id="@+id/txtNameAppForgetPass"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbarForgetPass"
+        android:layout_marginStart="12sp"
+        android:layout_marginTop="48sp"
+        android:layout_marginEnd="12sp"
+        android:layout_marginBottom="12sp"
+        android:gravity="center"
+        android:text="THAY ĐỔI MẬT KHẨU"
+        android:textColor="@color/black"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/txtInputLayoutAccountForgetPass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtNameAppForgetPass"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="12dp"
+        android:hint="Email"
+        android:textColorHint="@color/black">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtInputEdtAccountForgetPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:textColorHint="@color/black"
+        android:id="@+id/txtInputLayoutPassWordForgetPass"
+        android:layout_below="@+id/txtInputLayoutAccountForgetPass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:hint="Mật khẩu"
+        app:endIconMode="password_toggle">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtInputEdtPassWordForgetPass"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:textColorHint="@color/black"
+        android:id="@+id/txtInputLayoutPassWord2ForgetPass"
+        android:layout_below="@+id/txtInputLayoutPassWordForgetPass"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:hint="Mật khẩu mới"
+        app:endIconMode="password_toggle">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/txtInputEdtPassWord2ForgetPass"
+            android:layout_width="match_parent"
+            android:layout_height="58dp"
+            android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:id="@+id/btnConfirmForgetPass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtInputLayoutPassWord2ForgetPass"
+        android:layout_centerHorizontal="true"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/bo_tron_button"
+        android:paddingStart="24dp"
+        android:paddingTop="7dp"
+        android:paddingEnd="24dp"
+        android:paddingBottom="7dp"
+        android:text="Xác nhận"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_marginTop="12dp"
+        android:layout_below="@+id/btnConfirmForgetPass"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:id="@+id/txtTaiKhoanKhacForgetPass"
+            android:textColor="#000000"
+            android:text="Sử dụng tài khoản khác?"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <TextView
+            android:id="@+id/txtDangNhapInForgetPass"
+            android:layout_marginStart="5dp"
+            android:textColor="#0091EA"
+            android:text="Đăng nhập"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</RelativeLayout>

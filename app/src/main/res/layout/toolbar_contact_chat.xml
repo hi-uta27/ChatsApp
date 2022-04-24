@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgUserActionBarContact"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/logo_app" />
+
+    <TextView
+        android:id="@+id/txtNameActionBarContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/imgUserActionBarContact"
+        android:text="Người dùng"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/imgCameraContact"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="17dp"
+        android:layout_alignParentEnd="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/m_qr_code" />
+
+</RelativeLayout>

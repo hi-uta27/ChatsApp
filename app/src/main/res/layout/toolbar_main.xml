@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/imgUserActionBarMain"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/logo_app" />
+
+    <TextView
+        android:layout_centerVertical="true"
+        android:id="@+id/txtNameAppActionBar"
+        android:text="Chats"
+        android:textSize="24sp"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/imgUserActionBarMain"/>
+
+    <ImageView
+        android:layout_marginEnd="12dp"
+        android:layout_centerVertical="true"
+        android:id="@+id/imgInformationActionBarMain"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_alignParentEnd="true"
+        android:src="@drawable/ic_information"/>
+
+    <ImageView
+        android:id="@+id/imgCameraActionBarMain"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="12dp"
+        android:layout_toStartOf="@+id/imgInformationActionBarMain"
+        android:background="@drawable/bo_tron_item_20"
+        android:scaleType="centerInside"
+        android:src="@drawable/ic_camera" />
+
+</RelativeLayout>

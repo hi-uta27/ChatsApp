@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_ca_nhan" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgBackgroundCaNhan"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bo_tron_button"
+            android:scaleType="centerCrop"
+            android:src="@drawable/m_background_default" />
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgBackgroundCaNhan"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="-63dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgUserCaNhan"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:background="@drawable/bo_tron_item_100"
+                app:civ_border_color="#FFFFFF"
+                app:civ_border_width="4dp" />
+
+            <ImageView
+                android:id="@+id/imgButtonCameraCaNhan"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="bottom|right"
+                android:background="@drawable/bo_tron_item_20"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_camera"
+                tools:ignore="RtlHardcoded" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtUserNameCaNhan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="12dp"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtGmailCaNhan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@android:color/transparent"
+            android:gravity="end"
+            android:enabled="false"
+            android:textColor="#959595"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Họ tên"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtHoTenCaNhan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@android:color/transparent"
+            android:enabled="false"
+            android:gravity="end"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Ngày sinh"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/txtNgaySinhCaNhan"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@android:color/transparent"
+            android:enabled="false"
+            android:gravity="end"
+            android:inputType="date"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:weightSum="4">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Giới tính"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:gravity="end">
+
+            <CheckBox
+                android:id="@+id/cbNamCaNhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="7dp"
+                android:buttonTint="@color/black"
+                android:enabled="false"
+                android:text="Nam" />
+
+            <CheckBox
+                android:id="@+id/cbNuCaNhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:buttonTint="@color/black"
+                android:enabled="false"
+                android:text="Nữ" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp">
+
+        <Button
+            android:id="@+id/btnChinhSuaCaNhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/bo_tron_button"
+            android:drawableLeft="@drawable/ic_edit"
+            android:text="Chỉnh sửa"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            tools:ignore="RtlHardcoded" />
+
+        <Button
+            android:id="@+id/btnCapNhatCaNhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="7dp"
+            android:background="@drawable/bo_tron_button"
+            android:drawableLeft="@drawable/ic_done"
+            android:text="Cập nhật"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            tools:ignore="RtlHardcoded" />
+    </LinearLayout>
+
+</LinearLayout>

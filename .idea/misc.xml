@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable-v24/bo_tron_button.xml" value="0.222" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/background_receiver_message.xml" value="0.2185" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/background_send_message.xml" value="0.2185" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/bo_tron_2_goc_duoi.xml" value="0.2185" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/bo_tron_item.xml" value="0.152" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/bo_tron_item_100.xml" value="0.186" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/custom_color_nav_main.xml" value="0.1465" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/custom_color_text_nav_main.xml" value="0.1465" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_arrow_back.xml" value="0.222" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_baseline_camera_alt_24.xml" value="0.1865" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_contact.xml" value="0.1465" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_home.xml" value="0.1465" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_information.xml" value="0.1865" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_language.xml" value="0.2185" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_lock.xml" value="0.222" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_person.xml" value="0.222" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_phone.xml" value="0.2185" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_send.xml" value="0.2185" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_settings.xml" value="0.1465" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/drawable/ic_video.xml" value="0.2185" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout-v28/dang_nhap.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/action_bar_main.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/activity_contact_chat.xml" value="0.25" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/activity_dang_nhap_dang_ky.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/activity_friend_message.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/activity_home_chat.xml" value="0.25" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/activity_main.xml" value="0.22554347826086957" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/bottom_menu_main.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/ca_nhan_info.xml" value="0.264" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/cai_dat.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/contact_chat.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/dang_ky.xml" value="0.264" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/dang_nhap.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/dang_nhapp.xml" value="0.264" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/forget_pass.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/forget_pass_tool_bar.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/forgetpass_tool_bar.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/forgetpass_xac_minh.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/friend_info.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/friend_message.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/home_chat.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/item_chat_app.xml" value="0.264" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/item_message.xml" value="0.2" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/item_message2.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/item_receiver_message.xml" value="0.264" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/item_sent_message.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/item_setting.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/item_user_active.xml" value="0.25" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/item_user_contact.xml" value="0.25" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/menu_botton_message.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/quen_pass.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/setting_chat.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/tool_bar_forget_pass.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/toolbar_ca_nhan.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/toolbar_cai_dat.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/toolbar_contact_chat.xml" value="0.25" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/toolbar_forget_pass.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/toolbar_main.xml" value="0.264" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/layout/toolbar_message.xml" value="0.2421875" />
+        <entry key="..\:/BTL_ThucTap/ChatApp/app/src/main/res/menu/bottom_menu_main.xml" value="0.2421875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="Android Studio default JDK" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_ca_nhan"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imgBackgroundCaNhan"
+            android:layout_width="match_parent"
+            android:layout_height="170dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/bo_tron_button"
+            android:scaleType="centerCrop"
+            android:src="@drawable/m_background_default" />
+
+        <FrameLayout
+            android:layout_marginTop="-63dp"
+            android:layout_below="@+id/imgBackgroundCaNhan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true">
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/imgUserCaNhan"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:src="@drawable/user_default"
+                app:civ_border_color="@color/white"
+                app:civ_border_width="4dp" />
+        </FrameLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/txtUserNameCaNhan"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="12dp"
+        android:layout_gravity="center"
+        android:text="User name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
