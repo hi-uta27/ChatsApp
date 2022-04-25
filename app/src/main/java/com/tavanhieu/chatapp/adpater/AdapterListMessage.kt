@@ -32,7 +32,7 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
     }
 
     class MyReceiverViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imgFriend: CircleImageView  = itemView.findViewById(R.id.imgUserItemMessage)
+        var imgFriend: CircleImageView? = itemView.findViewById(R.id.imgUserItemMessage)
         var txtFriend: TextView         = itemView.findViewById(R.id.txtUserReceiverItemMessage)
         var txtTime: TextView           = itemView.findViewById(R.id.txtTimeReceiverMessage)
     }
@@ -62,8 +62,8 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
     @SuppressLint("SimpleDateFormat")
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val mess = arr[position]
-        //Lấy ra giờ và phút gửi:
-        val simpleDateFormat = SimpleDateFormat("HH:mm MMMM dd,yyyy")//, Locale.getDefault())
+        //Định dạng ngày và giờ gửi:
+        val simpleDateFormat = SimpleDateFormat("HH:mm MMMM dd,yyyy")
 
         if(getItemViewType(position) == HangSo.GUI_MESSAGE) {
             var checkTimeSent = true
@@ -72,7 +72,6 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
             //Gán dữ liệu:
             mHolder.txtMyMess.text = mess.mess
             mHolder.txtTime.text   = simpleDateFormat.format(mess.time!!)
-
             //Xem thời gian gửi tin:
             holder.txtMyMess.setOnClickListener {
                 if(checkTimeSent) {
@@ -90,7 +89,6 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
             //Gán dữ liệu:
             mHolder.txtFriend.text = mess.mess
             mHolder.txtTime.text   = simpleDateFormat.format(mess.time!!)
-
             //Xem thời gian gửi tin:
             holder.txtFriend.setOnClickListener {
                 if(checkTimeSent) {
@@ -101,14 +99,13 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
                     mHolder.txtTime.visibility = View.GONE
                 }
             }
-            //gán ảnh:
+            //gán ảnh người nhận:
             FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
-                .child(mess.senderId!!)
-                .downloadUrl
+                .child(mess.senderId!!).downloadUrl
                 .addOnSuccessListener {
-                    if(it.toString() != "" && it.toString().isNotEmpty())
-                        Picasso.get().load(it).into(mHolder.imgFriend)
+                    Picasso.get().load(it).into(mHolder.imgFriend)
                 }
+                .addOnFailureListener {}
         }
     }
 }

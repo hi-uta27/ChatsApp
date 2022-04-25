@@ -1,12 +1,10 @@
 package com.tavanhieu.chatapp.view_pager
 
-import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,7 +14,6 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import com.tavanhieu.chatapp.m_class.ItemCaiDat
 import com.tavanhieu.chatapp.R
@@ -27,11 +24,17 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class FragmentSettingChat: Fragment() {
     private lateinit var mView: View
-    private lateinit var imgUser: CircleImageView
     private lateinit var txtUserName: TextView
     private lateinit var rcvList: RecyclerView
     private lateinit var mAdapter: AdapterListCaiDat
     private var arr = ArrayList<ItemCaiDat>()
+
+    companion object {
+        private lateinit var imgUser: CircleImageView
+        fun setImage(uri: String) { //Không load lại ảnh ngay:
+            Picasso.get().load(uri).into(imgUser)
+        }
+    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mView = inflater.inflate(R.layout.cai_dat, container, false)
@@ -56,14 +59,6 @@ class FragmentSettingChat: Fragment() {
 
     private fun docDuLieuUser() {
         val uid = FirebaseAuth.getInstance().currentUser?.uid
-        //Ảnh user:
-        FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
-            .child(uid!!).downloadUrl
-            .addOnSuccessListener {
-                if(it != null)
-                    Picasso.get().load(it).into(imgUser)
-            }
-            .addOnFailureListener {}
         //Thông tin user:
         Firebase.database.reference.child(HangSo.KEY_USER)
             .addValueEventListener(object : ValueEventListener {
@@ -71,7 +66,9 @@ class FragmentSettingChat: Fragment() {
                     for (data in snapshot.children) {
                         val user = data.getValue(User::class.java)
                         if (user?.uid == uid) {
-                            txtUserName.text = user.hoTen
+                            txtUserName.text = user?.hoTen
+                            if(user?.image != null)
+                                Picasso.get().load(user?.image).into(imgUser)
                             break
                         }
                     }

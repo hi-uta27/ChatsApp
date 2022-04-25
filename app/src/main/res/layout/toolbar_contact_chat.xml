@@ -2,9 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    android:padding="5dp">
 
-    <de.hdodenhof.circleimageview.CircleImageView
+    <ImageView
         android:id="@+id/imgUserActionBarContact"
         android:layout_width="48dp"
         android:layout_height="48dp"
@@ -13,7 +13,7 @@
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        android:src="@drawable/logo_app" />
+        android:src="@drawable/logo_aph"/>
 
     <TextView
         android:id="@+id/txtNameActionBarContact"
@@ -28,11 +28,11 @@
 
     <ImageView
         android:id="@+id/imgCameraContact"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_centerVertical="true"
-        android:layout_marginEnd="17dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:layout_marginEnd="24dp"
         android:scaleType="centerInside"
         android:src="@drawable/m_qr_code" />
 

@@ -83,7 +83,7 @@
             android:background="@android:color/transparent"
             android:gravity="end"
             android:enabled="false"
-            android:textColor="#959595"
+            android:textColor="#AEAEAE"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -110,7 +110,7 @@
             android:background="@android:color/transparent"
             android:enabled="false"
             android:gravity="end"
-            android:textColor="@color/black"
+            android:textColor="#AEAEAE"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -138,7 +138,7 @@
             android:enabled="false"
             android:gravity="end"
             android:inputType="date"
-            android:textColor="@color/black"
+            android:textColor="#AEAEAE"
             android:textSize="16sp" />
     </LinearLayout>
 
@@ -203,6 +203,8 @@
             tools:ignore="RtlHardcoded" />
 
         <Button
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
             android:id="@+id/btnCapNhatCaNhan"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

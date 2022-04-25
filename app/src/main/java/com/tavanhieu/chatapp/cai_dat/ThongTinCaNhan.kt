@@ -3,6 +3,7 @@ package com.tavanhieu.chatapp.cai_dat
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -20,6 +21,7 @@ import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.activity.UserActiveActivity
 import com.tavanhieu.chatapp.m_class.HangSo
 import com.tavanhieu.chatapp.m_class.User
+import com.tavanhieu.chatapp.view_pager.FragmentSettingChat
 import de.hdodenhof.circleimageview.CircleImageView
 import java.lang.Exception
 
@@ -36,6 +38,8 @@ class ThongTinCaNhan: UserActiveActivity() {
     private lateinit var cbNu:          CheckBox
     private lateinit var btnChinhSua:   Button
     private lateinit var btnCapNhat:    Button
+    private val db = Firebase.database.reference.child(HangSo.KEY_USER)
+    private val uid = FirebaseAuth.getInstance().currentUser?.uid!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,28 +50,20 @@ class ThongTinCaNhan: UserActiveActivity() {
     }
 
     private fun hienThiNhatThongTinCaNhan() {
-        //load ảnh:
-        FirebaseStorage.getInstance().reference
-            .child("${HangSo.KEY_USER}/${FirebaseAuth.getInstance().currentUser?.uid!!}")
-            .downloadUrl.addOnSuccessListener {
-                Picasso.get().load(it).into(imgUser)
-            }.addOnFailureListener {
-                Toast.makeText(this, "Chưa có ảnh để hiển thị", Toast.LENGTH_SHORT).show()
-            }
         //Lấy user hiện tại:
-        Firebase.database.reference
-            .child(HangSo.KEY_USER)
-            .addValueEventListener(object: ValueEventListener {
+        db.addValueEventListener(object: ValueEventListener {
                 @SuppressLint("NotifyDataSetChanged")
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for(data in snapshot.children) {
                         val user = data.getValue(User::class.java)!!
-                        if(FirebaseAuth.getInstance().currentUser?.uid == user.uid) {
+                        if(uid == user.uid) {
                             //Set thông tin:
                             txtUserName.text = user.hoTen
                             edtGmail.setText(user.taiKhoan)
                             edtHoTen.setText(user.hoTen)
                             edtNgaySinh.setText(user.ngaySinh)
+                            if(user.image != null)
+                                Picasso.get().load(user.image).into(imgUser)
                             when {
                                 user.gioiTinh == "" -> {
                                     cbNam.isChecked = false
@@ -98,18 +94,28 @@ class ThongTinCaNhan: UserActiveActivity() {
         btnChinhSua     = findViewById(R.id.btnChinhSuaCaNhan)
     }
 
+    @SuppressLint("ResourceAsColor")
     private fun mOnClick() {
         btnChinhSua.setOnClickListener {
+            //Cho phép chỉnh sửa:
             edtHoTen.isEnabled    = true
             edtNgaySinh.isEnabled = true
             cbNam.isEnabled       = true
             cbNu.isEnabled        = true
+            //Chuyển màu chữ:
+            edtHoTen.setTextColor(Color.parseColor("#FF000000"))
+            edtNgaySinh.setTextColor(Color.parseColor("#FF000000"))
         }
         btnCapNhat.setOnClickListener {
+            //Tắt cho phép chỉnh sửa:
             edtHoTen.isEnabled    = false
             edtNgaySinh.isEnabled = false
             cbNam.isEnabled       = false
             cbNu.isEnabled        = false
+            //Chuyển màu chữ:
+            edtHoTen.setTextColor(Color.parseColor("#AEAEAE"))
+            edtNgaySinh.setTextColor(Color.parseColor("#AEAEAE"))
+
             capNhatDuLieuLenFirebase()
         }
         cbNam.setOnCheckedChangeListener { buttonView, isChecked ->
@@ -145,10 +151,10 @@ class ThongTinCaNhan: UserActiveActivity() {
             edtNgaySinh.error = "Không được để trống"
         } else {
             //Cập nhật user: (họ tên, ngày sinh, giới tính)
-            val db = Firebase.database.reference.child(HangSo.KEY_USER).child(FirebaseAuth.getInstance().currentUser?.uid!!)
-            db.child("hoTen").setValue(hoTen)
-            db.child("ngaySinh").setValue(ngaySinh)
-            db.child("gioiTinh").setValue(gioiTinh)
+            db.child(uid).child("hoTen").setValue(hoTen)
+            db.child(uid).child("ngaySinh").setValue(ngaySinh)
+            db.child(uid).child("gioiTinh").setValue(gioiTinh)
+            Toast.makeText(this, "Cập nhật thành công", Toast.LENGTH_SHORT).show()
         }
     }
 
@@ -165,12 +171,28 @@ class ThongTinCaNhan: UserActiveActivity() {
         }
     }
 
+    //Khai báo và nhận kết quả trả về từ thư viện:
     private var mGalleryStartActivityForResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         try {
-            imgUser.setImageURI(uri)
+            //Cập nhật ảnh lên FireStorage:
             FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
-                .child(FirebaseAuth.getInstance().currentUser?.uid!!)
+                .child(uid)
                 .putFile(uri!!)
+            //Cập nhật Uri ảnh từ Firebase Storage về RealTimeDB để tăng hiệu suất load ảnh:
+            FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
+                .child(uid).downloadUrl
+                .addOnSuccessListener {
+                    //Lưu vào realTime:
+                    db.child(uid).child("image").setValue(it.toString())
+                    //Cập nhật ảnh:
+                    Picasso.get().load(it).into(imgUser)
+                    //Cập nhật lại ảnh ở setting chat:
+                    FragmentSettingChat.setImage(it.toString())
+                    Toast.makeText(this, "Cập nhật ảnh thành công", Toast.LENGTH_SHORT).show()
+                }
+                .addOnFailureListener {
+                    Toast.makeText(this, "Lỗi cập nhật ảnh", Toast.LENGTH_SHORT).show()
+                }
         } catch (ex: Exception) {}
     }
 

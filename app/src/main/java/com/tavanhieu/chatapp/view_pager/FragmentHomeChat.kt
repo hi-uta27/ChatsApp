@@ -37,6 +37,8 @@ class FragmentHomeChat: Fragment() {
     private var arr: ArrayList<Conversations>  = ArrayList()
     private var arrSearch: ArrayList<User>     = ArrayList()
     private var arrUserActive: ArrayList<User> = ArrayList()
+    private val db = Firebase.database.reference.child(HangSo.KEY_USER)
+    private val uid = FirebaseAuth.getInstance().currentUser?.uid!!
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mView = inflater.inflate(R.layout.activity_home_chat, container, false)
@@ -70,8 +72,7 @@ class FragmentHomeChat: Fragment() {
                         recyclerView.visibility = View.GONE
                         rcvSearch.visibility    = View.VISIBLE
                         //Hiển thị list search:
-                        Firebase.database.reference.child(HangSo.KEY_USER)
-                            .addValueEventListener(object: ValueEventListener {
+                        db.addValueEventListener(object: ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     arrSearch.clear()
                                     for(data in snapshot.children) {
@@ -111,8 +112,8 @@ class FragmentHomeChat: Fragment() {
         //Đọc tin nhắn đã gửi:
         progressBar.visibility = View.VISIBLE
         Firebase.database.reference.child(HangSo.KEY_CONVERSATIONS)
-            .child(FirebaseAuth.getInstance().currentUser?.uid!!)
-            .addValueEventListener(object : ValueEventListener {
+            .child(uid)
+            .addValueEventListener(object: ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
                 //Ý tưởng load ở đây load luôn trạng thái người dùng:
@@ -131,14 +132,13 @@ class FragmentHomeChat: Fragment() {
 
     private fun docUserActive() {
         //Đọc người dùng đang hoạt động:
-        Firebase.database.reference.child(HangSo.KEY_USER)
-            .addValueEventListener(object: ValueEventListener {
+        db.addValueEventListener(object: ValueEventListener {
                 @SuppressLint("NotifyDataSetChanged")
                 override fun onDataChange(snapshot: DataSnapshot) {
                     arrUserActive.clear()
                     for(data in snapshot.children) {
                         val user = data.getValue(User::class.java)
-                        if(user?.available == 1 && user.uid != FirebaseAuth.getInstance().currentUser?.uid) {
+                        if(user?.available == 1 && user.uid != uid) {
                             arrUserActive.add(user)
                         }
                     }

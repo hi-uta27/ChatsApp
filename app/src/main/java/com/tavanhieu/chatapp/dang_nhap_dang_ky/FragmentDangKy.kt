@@ -94,7 +94,7 @@ class FragmentDangKy: Fragment() {
                     //Thêm dữ liệu vào realTime DB:
                     db.reference.child(HangSo.KEY_USER)
                         .child(mAuth.currentUser?.uid!!)
-                        .setValue(User(email, hoTen, mAuth.currentUser?.uid!!, 0, "", ""))
+                        .setValue(User(email, hoTen, mAuth.currentUser?.uid!!, 0, "", "", null))
                     //Đăng xuất người dùng để nhập mật khẩu ở đăng nhập:
                     mAuth.signOut()
 

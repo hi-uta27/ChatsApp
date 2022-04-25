@@ -3,7 +3,7 @@ package com.tavanhieu.chatapp.m_class
 import java.util.*
 
 class Message {
-    var time: Date?       = null
+    var time: Date?         = null
     var mess: String?       = null
     var senderId: String?   = null
 

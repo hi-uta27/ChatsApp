@@ -9,12 +9,10 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.activity.FriendMessageActivity
 import com.tavanhieu.chatapp.m_class.Conversations
-import com.tavanhieu.chatapp.m_class.HangSo
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 
@@ -22,11 +20,11 @@ class AdapterListChatMain(var context: Context): RecyclerView.Adapter<AdapterLis
     private lateinit var arr: ArrayList<Conversations>
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        var imgUserItemChatApp: CircleImageView = itemView.findViewById(R.id.imgUserItemChatApp)
-        var viewStatusUserItemChatApp: View     = itemView.findViewById(R.id.viewStatusUserItemChatApp)
-        var txtUserNameItemChatApp: TextView    = itemView.findViewById(R.id.txtUserNameItemChatApp)
-        var txtContentMessItemChatApp: TextView = itemView.findViewById(R.id.txtContentMessItemChatApp)
-        var txtTimeItemChatApp: TextView        = itemView.findViewById(R.id.txtTimeItemChatApp)
+        var imgUserItemChatApp: CircleImageView? = itemView.findViewById(R.id.imgUserItemChatApp)
+        var viewStatusUserItemChatApp: View      = itemView.findViewById(R.id.viewStatusUserItemChatApp)
+        var txtUserNameItemChatApp: TextView     = itemView.findViewById(R.id.txtUserNameItemChatApp)
+        var txtContentMessItemChatApp: TextView  = itemView.findViewById(R.id.txtContentMessItemChatApp)
+        var txtTimeItemChatApp: TextView         = itemView.findViewById(R.id.txtTimeItemChatApp)
     }
 
     @SuppressLint("NotifyDataSetChanged")
@@ -48,14 +46,10 @@ class AdapterListChatMain(var context: Context): RecyclerView.Adapter<AdapterLis
         holder.viewStatusUserItemChatApp.visibility = View.GONE
         holder.txtUserNameItemChatApp.text = res.hoTen
         holder.txtTimeItemChatApp.text = simpleDateFormat.format(res.timeSent!!)
-        //Hiển thị ảnh: (Lỗi: khi nhắn sẽ lấy ảnh của người gần tin nhắn:)) )
-        FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
-            .child(res.uid.toString()).downloadUrl
-            .addOnSuccessListener {
-                if(it.toString() != "" && it.toString().isNotEmpty())
-                    Picasso.get().load(it).into(holder.imgUserItemChatApp)
-            }
-            .addOnFailureListener {}
+        //Hiển thị ảnh:
+        if(res.image != null && !res.image.isNullOrEmpty())
+            Picasso.get().load(res.image).into(holder.imgUserItemChatApp)
+
         //Nội dung nhắn:
         if(FirebaseAuth.getInstance().currentUser?.uid != res.uid)
             holder.txtContentMessItemChatApp.text = res.content

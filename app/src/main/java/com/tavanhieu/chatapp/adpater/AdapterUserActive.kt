@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.m_class.User
 import de.hdodenhof.circleimageview.CircleImageView
@@ -35,6 +36,8 @@ class AdapterUserActive(var context: Context): RecyclerView.Adapter<AdapterUserA
 
         holder.txtNameUserActive.visibility = View.VISIBLE
         holder.txtNameUserActive.text = user.hoTen
+        if(user.image != null)
+            Picasso.get().load(user.image).into(holder.imgUserActive)
     }
 
     override fun getItemCount(): Int {

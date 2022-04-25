@@ -24,7 +24,6 @@
     <TextView
         android:visibility="gone"
         android:id="@+id/txtTimeSendMessage"
-        android:layout_marginTop="7dp"
         android:layout_marginEnd="24dp"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/txtUserSendMessage"

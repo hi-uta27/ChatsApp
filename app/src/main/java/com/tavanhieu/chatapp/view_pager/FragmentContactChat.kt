@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
@@ -14,6 +15,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.adpater.AdapterContactChat
 import com.tavanhieu.chatapp.m_class.HangSo
@@ -32,6 +34,7 @@ class FragmentContactChat: Fragment() {
         progressBar = mView.findViewById(R.id.progressBarContactChat)
         docListUser()
 
+        //Ánh xạ view cho list người dùng:
         mAdapter = AdapterContactChat(requireContext())
         mAdapter.setData(arr)
         rcvListUser.adapter = mAdapter
