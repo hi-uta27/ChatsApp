@@ -69,19 +69,26 @@ class FragmentDangKy: Fragment() {
         //Kiểm tra null:
         if(hoTen.isEmpty() || hoTen == "") {
             edtFullName.error = "Không được để trống"
+            edtFullName.requestFocus()
         } else if(email.isEmpty() || email == "") {
             edtAccount.error = "Không được để trống"
+            edtAccount.requestFocus()
         } else if(!email.matches(HangSo.REGEX_EMAIL.toRegex())) {
             //Kiểm tra định dạng email.
             edtAccount.error = "Email không hợp lệ"
+            edtAccount.requestFocus()
         } else if(pass.isEmpty() || pass == "") {
             edtPassWord.error = "Không được để trống"
+            edtPassWord.requestFocus()
         } else if(pass.length < 6) {
             edtPassWord.error = "Mật khẩu ít nhất 6 kí tự"
+            edtPassWord.requestFocus()
         } else if(pass2.isEmpty() || pass2 == "") {
             edtPassWord2.error = "Không được để trống"
+            edtPassWord2.requestFocus()
         } else if(pass != pass2) {
             edtPassWord2.error = "Mật khẩu không khớp"
+            edtPassWord2.requestFocus()
         } else {
             signUp(email, pass, hoTen, supportFragment)
         }

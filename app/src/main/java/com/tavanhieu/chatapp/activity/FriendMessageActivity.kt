@@ -11,6 +11,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.squareup.picasso.Picasso
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.adpater.AdapterListMessage
 import com.tavanhieu.chatapp.m_class.Conversations
@@ -52,6 +54,16 @@ class FriendMessageActivity : UserActiveActivity() {
         uidReceiver = intent.getStringExtra("receiverId")!!
         uidSender   = FirebaseAuth.getInstance().currentUser?.uid!!
 
+        //Load ảnh toolbar người nhận - Load ảnh người nhận:
+        FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
+            .child(uidReceiver).downloadUrl
+            .addOnSuccessListener {
+                if(it != null) {
+                    Picasso.get().load(it).into(imgFriend)
+                }
+            }
+            .addOnFailureListener {}
+
         //Gán tên lên toolbar, đọc message:
         txtFriend.text = hoTenReceiver
         docMessage()
@@ -84,19 +96,23 @@ class FriendMessageActivity : UserActiveActivity() {
         sendMessBottom.setOnClickListener { sendMessage() }
     }
     private fun sendMessage() {
-        var userRecent: User? = null
-        var userReceiver: User? = null
-        //Lấy ra tên Người gửi/ Người nhận hiện tại:
+        var tenNguoiGui: String? = null
+        var anhNguoiGui: String? = null
+        var tenNguoiNhan: String? = null
+        var anhNguoiNhan: String? = null
+        //Lấy ra tên + ảnh Người gửi/ Người nhận hiện tại:
         Firebase.database.reference.child(HangSo.KEY_USER)
             .addValueEventListener(object: ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     for(data in snapshot.children) {
-                        val user = data.getValue(User::class.java)
-                        if(user?.uid.equals(uidSender)) {
-                            userRecent = user
+                        val user = data.getValue(User::class.java)!!
+                        if(user.uid.equals(uidSender)) {
+                            tenNguoiGui = user.hoTen
+                            anhNguoiGui = user.image
                         }
-                        if(user?.uid.equals(uidReceiver)) {
-                            userReceiver = user
+                        if(user.uid.equals(uidReceiver)) {
+                            tenNguoiNhan = user.hoTen
+                            anhNguoiNhan = user.image
                         }
                     }
                 }
@@ -105,32 +121,33 @@ class FriendMessageActivity : UserActiveActivity() {
 
         val mess = edtMessBottom.text.trim().toString()
         val date = Date()
+
         //Kiểm tra nếu tin nhắn không rỗng thì cho phép thực hiện:
         if(mess.isNotEmpty() || mess != "") {
-            //Add tin nhắn gửi:
+            //Add tin nhắn cho người gửi:
             Firebase.database.reference.child(HangSo.KEY_CHATS_TTCN)
                 .child(uidSender+uidReceiver)
                 .child(HangSo.KEY_MESSAGE).push()
-                .setValue(Message(date, mess, uidSender))
+                .setValue(Message(date, mess, uidSender, null))
                 .addOnSuccessListener {
 
-                    //Add tin nhắn nhận:
+                    //Add tin nhắn cho người nhận:
                     Firebase.database.reference.child(HangSo.KEY_CHATS_TTCN)
                         .child(uidReceiver+uidSender)
                         .child(HangSo.KEY_MESSAGE).push()
-                        .setValue(Message(date, mess, uidSender))
+                        .setValue(Message(date, mess, uidSender, null))
 
-                    //Add list người đã nhắn:
+                    //Add người đã nhắn:
                     Firebase.database.reference.child(HangSo.KEY_CONVERSATIONS)
                         .child(uidSender)
                         .child(uidReceiver)
-                        .setValue(Conversations(hoTenReceiver, "Bạn: $mess", date, uidReceiver, userReceiver?.image))
+                        .setValue(Conversations(tenNguoiNhan!!, "Bạn: $mess", date, uidReceiver, anhNguoiNhan))
 
-                    //Add list người nhắn cho người đã nhắn:
+                    //Add người nhắn cho người nhận:
                     Firebase.database.reference.child(HangSo.KEY_CONVERSATIONS)
                         .child(uidReceiver)
                         .child(uidSender)
-                        .setValue(Conversations(userRecent?.hoTen!!, mess, date, uidSender, userRecent?.image))
+                        .setValue(Conversations(tenNguoiGui!!, mess, date, uidSender, anhNguoiGui))
                 }
         }
         //Sau khi gửi xong xóa nội dung nhắn trước đó:
@@ -139,6 +156,7 @@ class FriendMessageActivity : UserActiveActivity() {
 
     private fun docMessage() {
         progressBar.visibility = View.VISIBLE
+
         //Đọc message từ firebase và gán vào mảng:
         Firebase.database.reference.child(HangSo.KEY_CHATS_TTCN)
             .child(uidSender+uidReceiver)

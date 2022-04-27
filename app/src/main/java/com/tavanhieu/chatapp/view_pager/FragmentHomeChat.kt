@@ -116,7 +116,6 @@ class FragmentHomeChat: Fragment() {
             .addValueEventListener(object: ValueEventListener {
             @SuppressLint("NotifyDataSetChanged")
             override fun onDataChange(snapshot: DataSnapshot) {
-                //Ý tưởng load ở đây load luôn trạng thái người dùng:
                 arr.clear()
                 for (data in snapshot.children) {
                     val userConversations = data.getValue(Conversations::class.java)
@@ -142,6 +141,7 @@ class FragmentHomeChat: Fragment() {
                             arrUserActive.add(user)
                         }
                     }
+                    arrUserActive.sortBy { item -> item.hoTen }
                     mAdapterUserActive.notifyDataSetChanged()
                 }
                 override fun onCancelled(error: DatabaseError) {}

@@ -25,16 +25,10 @@ import de.hdodenhof.circleimageview.CircleImageView
 class FragmentSettingChat: Fragment() {
     private lateinit var mView: View
     private lateinit var txtUserName: TextView
+    private lateinit var imgUser: CircleImageView
     private lateinit var rcvList: RecyclerView
     private lateinit var mAdapter: AdapterListCaiDat
     private var arr = ArrayList<ItemCaiDat>()
-
-    companion object {
-        private lateinit var imgUser: CircleImageView
-        fun setImage(uri: String) { //Không load lại ảnh ngay:
-            Picasso.get().load(uri).into(imgUser)
-        }
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mView = inflater.inflate(R.layout.cai_dat, container, false)
@@ -48,6 +42,7 @@ class FragmentSettingChat: Fragment() {
         mAdapter.setData(arr)
         rcvList.layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
         rcvList.adapter = mAdapter
+
         return mView
     }
 
@@ -68,7 +63,7 @@ class FragmentSettingChat: Fragment() {
                         if (user?.uid == uid) {
                             txtUserName.text = user?.hoTen
                             if(user?.image != null)
-                                Picasso.get().load(user?.image).into(imgUser)
+                                Picasso.get().load(user.image).into(imgUser)
                             break
                         }
                     }

@@ -17,7 +17,7 @@
         android:layout_marginEnd="12sp"
         android:layout_marginBottom="12sp"
         android:gravity="center"
-        android:text="XÁC MINH MẬT KHẨU"
+        android:text="THAY ĐỔI MẬT KHẨU"
         android:textColor="@color/black"
         android:textSize="32sp"
         android:textStyle="bold" />
@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtNameAppForgetPassXacMinh"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="36dp"
         android:layout_marginEnd="12dp"
         android:hint="Email"
         android:textColorHint="@color/black">
@@ -41,43 +41,25 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
-        android:textSize="14sp"
-        android:layout_marginTop="24dp"
-        android:gravity="center"
-        android:textColor="@color/black"
-        android:text="Chúng tôi sẽ gửi mã đến email của bạn"
         android:id="@+id/txtThongBaoForgetPassXacMinh"
-        android:layout_below="@+id/txtInputLayoutAccountForgetPassXacMinh"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
-
-    <com.google.android.material.textfield.TextInputLayout
-        android:textColorHint="@color/black"
-        android:id="@+id/txtInputLayoutPassWordForgetPassXacMinh"
-        android:layout_below="@+id/txtThongBaoForgetPassXacMinh"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
-        android:hint="Nhập mã">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/txtInputEdtCodeForgetPassXacMinh"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="text"/>
-    </com.google.android.material.textfield.TextInputLayout>
+        android:layout_below="@+id/txtInputLayoutAccountForgetPassXacMinh"
+        android:layout_marginTop="24dp"
+        android:gravity="center"
+        android:text="Chúng tôi sẽ gửi link tạo mật khẩu đến email của bạn."
+        android:textColor="@color/black"
+        android:textSize="14sp" />
 
 
     <Button
         android:id="@+id/btnConfirmForgetPassXacMinh"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/txtInputLayoutPassWordForgetPassXacMinh"
+        android:layout_below="@+id/txtThongBaoForgetPassXacMinh"
         android:layout_centerHorizontal="true"
         android:layout_marginStart="12dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="54dp"
         android:layout_marginEnd="12dp"
         android:background="@drawable/bo_tron_button"
         android:paddingStart="24dp"

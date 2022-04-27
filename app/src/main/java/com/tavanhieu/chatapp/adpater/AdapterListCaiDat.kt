@@ -1,6 +1,7 @@
 package com.tavanhieu.chatapp.adpater
 
 import android.annotation.SuppressLint
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
@@ -11,10 +12,11 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
-import com.tavanhieu.chatapp.m_class.ItemCaiDat
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.activity.DangNhapDangKyActivity
 import com.tavanhieu.chatapp.cai_dat.ThongTinCaNhan
+import com.tavanhieu.chatapp.m_class.ItemCaiDat
+
 
 class AdapterListCaiDat(var context: Context): RecyclerView.Adapter<AdapterListCaiDat.MyViewHolder>() {
     private lateinit var arr: ArrayList<ItemCaiDat>
@@ -61,6 +63,9 @@ class AdapterListCaiDat(var context: Context): RecyclerView.Adapter<AdapterListC
                     Toast.makeText(context, "Cài đặt", Toast.LENGTH_SHORT).show()
                 }
                 5 -> {
+                    //Đóng màn hình:
+                    (context as Activity).finish()
+                    //Mở màn hình đăng nhập
                     context.startActivity(Intent(context, DangNhapDangKyActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
                     FirebaseAuth.getInstance().signOut()
                 }

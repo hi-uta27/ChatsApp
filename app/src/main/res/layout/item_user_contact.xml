@@ -21,8 +21,8 @@
         android:id="@+id/viewStatusUserContactChat"
         android:layout_width="18dp"
         android:layout_height="18dp"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="45dp"
+        android:layout_marginStart="44dp"
+        android:layout_marginTop="40dp"
         android:background="@drawable/bo_tron_item_20"
         android:backgroundTint="#63FF00"
         android:backgroundTintMode="multiply" />

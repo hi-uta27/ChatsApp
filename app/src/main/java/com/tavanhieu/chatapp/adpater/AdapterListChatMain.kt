@@ -47,7 +47,7 @@ class AdapterListChatMain(var context: Context): RecyclerView.Adapter<AdapterLis
         holder.txtUserNameItemChatApp.text = res.hoTen
         holder.txtTimeItemChatApp.text = simpleDateFormat.format(res.timeSent!!)
         //Hiển thị ảnh:
-        if(res.image != null && !res.image.isNullOrEmpty())
+        if(res.image != null)
             Picasso.get().load(res.image).into(holder.imgUserItemChatApp)
 
         //Nội dung nhắn:

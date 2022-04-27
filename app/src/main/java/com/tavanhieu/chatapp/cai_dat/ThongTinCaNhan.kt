@@ -174,6 +174,8 @@ class ThongTinCaNhan: UserActiveActivity() {
     //Khai báo và nhận kết quả trả về từ thư viện:
     private var mGalleryStartActivityForResult = registerForActivityResult(ActivityResultContracts.GetContent()) { uri: Uri? ->
         try {
+            //cập nhật ảnh:
+            Picasso.get().load(uri).into(imgUser)
             //Cập nhật ảnh lên FireStorage:
             FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
                 .child(uid)
@@ -184,10 +186,6 @@ class ThongTinCaNhan: UserActiveActivity() {
                 .addOnSuccessListener {
                     //Lưu vào realTime:
                     db.child(uid).child("image").setValue(it.toString())
-                    //Cập nhật ảnh:
-                    Picasso.get().load(it).into(imgUser)
-                    //Cập nhật lại ảnh ở setting chat:
-                    FragmentSettingChat.setImage(it.toString())
                     Toast.makeText(this, "Cập nhật ảnh thành công", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {

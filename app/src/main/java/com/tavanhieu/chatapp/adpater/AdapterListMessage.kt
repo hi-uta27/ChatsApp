@@ -63,7 +63,7 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         val mess = arr[position]
         //Định dạng ngày và giờ gửi:
-        val simpleDateFormat = SimpleDateFormat("HH:mm MMMM dd,yyyy")
+        val simpleDateFormat = SimpleDateFormat("HH:mm MMMM dd, yyyy")
 
         if(getItemViewType(position) == HangSo.GUI_MESSAGE) {
             var checkTimeSent = true
@@ -99,11 +99,13 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
                     mHolder.txtTime.visibility = View.GONE
                 }
             }
-            //gán ảnh người nhận:
+            //Load ảnh người nhận:
             FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
                 .child(mess.senderId!!).downloadUrl
                 .addOnSuccessListener {
-                    Picasso.get().load(it).into(mHolder.imgFriend)
+                    if(it != null) {
+                        Picasso.get().load(it).into(mHolder.imgFriend)
+                    }
                 }
                 .addOnFailureListener {}
         }

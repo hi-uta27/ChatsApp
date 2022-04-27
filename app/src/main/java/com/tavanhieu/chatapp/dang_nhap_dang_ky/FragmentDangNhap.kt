@@ -1,6 +1,9 @@
 package com.tavanhieu.chatapp.dang_nhap_dang_ky
 
+import android.annotation.SuppressLint
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -21,16 +24,24 @@ class FragmentDangNhap: Fragment() {
     private lateinit var btnDangNhap: Button
     private lateinit var imgLoginFaceBook: ImageView
     private lateinit var imgLoginGoogle: ImageView
+    private lateinit var mShared: SharedPreferences
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         mView = inflater.inflate(R.layout.dang_nhapp, container, false)
         anhXa()
 
+        mShared = container!!.context.getSharedPreferences("MY_SHARED", Context.MODE_PRIVATE)
         //Tự động đăng nhập nếu đã đăng nhập trước đó:
         val authCurrent = FirebaseAuth.getInstance().currentUser
-        if(authCurrent != null) {
+        if (authCurrent != null) {
             startActivity(Intent(requireContext(), MainActivity::class.java))
             requireActivity().finish()
+        }
+        //Load tài khoản/ mật khẩu đã lưu:
+        edtAccount.setText(mShared.getString("taiKhoan", null))
+        edtPassWord.setText(mShared.getString("matKhau", null))
+        if (edtAccount.text != null && !edtAccount.text.equals("")) {
+            cbNhoMatKhau.isChecked = true
         }
         mOnClick()
         return mView
@@ -62,7 +73,7 @@ class FragmentDangNhap: Fragment() {
         }
 
         txtQuenMatKhau.setOnClickListener {
-            supportFragment.replace(R.id.fragmentDangNhapDangKy, FragmentThayDoiMatKhau())
+            supportFragment.replace(R.id.fragmentDangNhapDangKy, FragmentXacMinhMatKhau())
                 .addToBackStack("DangNhap").commit()
         }
 
@@ -72,10 +83,18 @@ class FragmentDangNhap: Fragment() {
         }
     }
 
+    @SuppressLint("CommitPrefEdits")
     private fun login(account: String, password: String) {
         FirebaseAuth.getInstance().signInWithEmailAndPassword(account, password)
             .addOnCompleteListener(requireActivity()) {task ->
                 if(task.isSuccessful) {
+                    //lưu tài khoản vào data local:
+                    if(cbNhoMatKhau.isChecked) {
+                        mShared.edit().putString("taiKhoan", account)?.apply()
+                        mShared.edit().putString("matKhau", password)?.apply()
+                    } else {
+                        mShared.edit().clear()?.apply()
+                    }
                     startActivity(Intent(requireContext(), MainActivity::class.java))
                     requireActivity().finish()
                 } else {
