@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.SearchView
-import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -25,10 +25,9 @@ import com.tavanhieu.chatapp.m_class.Conversations
 import com.tavanhieu.chatapp.m_class.HangSo
 import com.tavanhieu.chatapp.m_class.User
 
-class FragmentHomeChat: Fragment() {
+class FragmentHomeChat() : Fragment() {
     private lateinit var mView: View
     private lateinit var recyclerView: RecyclerView
-    private lateinit var rcvSearch: RecyclerView
     private lateinit var rcvUserActive: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var mSearchView: SearchView
@@ -57,6 +56,19 @@ class FragmentHomeChat: Fragment() {
         mAdapterUserActive.setData(arrUserActive)
         rcvUserActive.adapter = mAdapterUserActive
 
+        //Back Pressed: (Đóng search nếu đang mở)
+        activity?.onBackPressedDispatcher?.addCallback(requireActivity(), object: OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                if (!mSearchView.isIconified) {
+                    mSearchView.isIconified = true
+                    recyclerView.adapter = mAdapterConversation
+                } else {
+                    isEnabled = false
+                    activity?.onBackPressed()
+                }
+            }
+        })
+
         mOnClick()
         return mView
     }
@@ -69,20 +81,20 @@ class FragmentHomeChat: Fragment() {
                         return false
                     }
                     override fun onQueryTextChange(newText: String?): Boolean {
-                        recyclerView.visibility = View.GONE
-                        rcvSearch.visibility    = View.VISIBLE
                         //Hiển thị list search:
                         db.addValueEventListener(object: ValueEventListener {
                                 override fun onDataChange(snapshot: DataSnapshot) {
                                     arrSearch.clear()
+                                    //Lấy danh sách search:
                                     for(data in snapshot.children) {
                                         val user = data.getValue(User::class.java)
                                         if(user!!.hoTen.equals(newText, true))
                                             arrSearch.add(user)
                                     }
+                                    //Ánh xạ view adapter:
                                     val mAdapter2 = AdapterContactChat(requireContext())
                                     mAdapter2.setData(arrSearch)
-                                    rcvSearch.adapter = mAdapter2
+                                    recyclerView.adapter = mAdapter2
                                 }
                                 override fun onCancelled(error: DatabaseError) {}
                             })
@@ -91,18 +103,15 @@ class FragmentHomeChat: Fragment() {
                 })
             }
         })
-        //Mở lại list message đã nhắn: lỗi không load lại rcvListChat khi close search
+        //Mở lại list message đã nhắn:
         mSearchView.setOnCloseListener {
-            rcvSearch.visibility = View.GONE
-            recyclerView.visibility = View.VISIBLE
-            Toast.makeText(requireContext(), "Đóng search!", Toast.LENGTH_SHORT).show()
-            true
+            recyclerView.adapter = mAdapterConversation
+            false
         }
     }
 
     private fun anhXa() {
         recyclerView  = mView.findViewById(R.id.recycleViewListChatMain)
-        rcvSearch     = mView.findViewById(R.id.recycleViewSearchChatMain)
         progressBar   = mView.findViewById(R.id.progressBarListChatMain)
         mSearchView   = mView.findViewById(R.id.searchViewListChatMain)
         rcvUserActive = mView.findViewById(R.id.recycleViewUserActiveChatMain)

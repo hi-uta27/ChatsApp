@@ -45,30 +45,34 @@ class AdapterListCaiDat(var context: Context): RecyclerView.Adapter<AdapterListC
         holder.iconItem.setImageResource(item.img)
         holder.nameItem.text = item.text
 
-        holder.itemView.setOnClickListener {
-            when(position) {
-                0 -> {
-                    context.startActivity(Intent(context, ThongTinCaNhan::class.java))
-                }
-                1 -> {
-                    Toast.makeText(context, "Thông tin ứng dụng", Toast.LENGTH_SHORT).show()
-                }
-                2 -> {
-                    Toast.makeText(context, "Ngôn ngữ", Toast.LENGTH_SHORT).show()
-                }
-                3 -> {
-                    Toast.makeText(context, "Trợ giúp", Toast.LENGTH_SHORT).show()
-                }
-                4 -> {
-                    Toast.makeText(context, "Cài đặt", Toast.LENGTH_SHORT).show()
-                }
-                5 -> {
-                    //Đóng màn hình:
-                    (context as Activity).finish()
-                    //Mở màn hình đăng nhập
-                    context.startActivity(Intent(context, DangNhapDangKyActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
-                    FirebaseAuth.getInstance().signOut()
-                }
+        holder.itemView.setOnClickListener { openItemCaiDat(position) }
+        holder.nameItem.setOnClickListener { openItemCaiDat(position) }
+        holder.iconItem.setOnClickListener { openItemCaiDat(position) }
+    }
+
+    private fun openItemCaiDat(position: Int) {
+        when(position) {
+            0 -> {
+                context.startActivity(Intent(context, ThongTinCaNhan::class.java))
+            }
+            1 -> {
+                Toast.makeText(context, "Thông tin ứng dụng", Toast.LENGTH_SHORT).show()
+            }
+            2 -> {
+                Toast.makeText(context, "Ngôn ngữ", Toast.LENGTH_SHORT).show()
+            }
+            3 -> {
+                Toast.makeText(context, "Trợ giúp", Toast.LENGTH_SHORT).show()
+            }
+            4 -> {
+                Toast.makeText(context, "Cài đặt", Toast.LENGTH_SHORT).show()
+            }
+            5 -> {
+                //Đóng màn hình:
+                (context as Activity).finish()
+                //Mở màn hình đăng nhập
+                context.startActivity(Intent(context, DangNhapDangKyActivity::class.java).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP))
+                FirebaseAuth.getInstance().signOut()
             }
         }
     }

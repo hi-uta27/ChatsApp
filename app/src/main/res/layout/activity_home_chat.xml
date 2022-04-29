@@ -17,7 +17,6 @@
             <SearchView
                 android:id="@+id/searchViewListChatMain"
                 android:background="@drawable/bo_tron_item_100"
-                android:iconifiedByDefault="false"
                 android:queryHint="Tìm người dùng..."
                 android:layout_marginTop="7dp"
                 android:layout_marginStart="12dp"
@@ -39,14 +38,6 @@
                android:id="@+id/recycleViewUserActiveChatMain"
                android:layout_width="match_parent"
                android:layout_height="match_parent"/>
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:orientation="vertical"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                android:visibility="gone"
-                android:id="@+id/recycleViewSearchChatMain"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
 
            <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycleViewListChatMain"

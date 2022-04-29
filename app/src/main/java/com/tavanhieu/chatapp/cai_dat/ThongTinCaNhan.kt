@@ -21,7 +21,6 @@ import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.activity.UserActiveActivity
 import com.tavanhieu.chatapp.m_class.HangSo
 import com.tavanhieu.chatapp.m_class.User
-import com.tavanhieu.chatapp.view_pager.FragmentSettingChat
 import de.hdodenhof.circleimageview.CircleImageView
 import java.lang.Exception
 

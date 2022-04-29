@@ -2,6 +2,7 @@ package com.tavanhieu.chatapp.adpater
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +10,8 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.tavanhieu.chatapp.R
+import com.tavanhieu.chatapp.activity.FriendMessageActivity
+import com.tavanhieu.chatapp.m_class.Conversations
 import com.tavanhieu.chatapp.m_class.User
 import de.hdodenhof.circleimageview.CircleImageView
 
@@ -38,6 +41,17 @@ class AdapterUserActive(var context: Context): RecyclerView.Adapter<AdapterUserA
         holder.txtNameUserActive.text = user.hoTen
         if(user.image != null)
             Picasso.get().load(user.image).into(holder.imgUserActive)
+
+        holder.itemView.setOnClickListener { openMessageActivity(user) }
+        holder.imgUserActive.setOnClickListener { openMessageActivity(user) }
+        holder.txtNameUserActive.setOnClickListener { openMessageActivity(user) }
+    }
+
+    private fun openMessageActivity(res: User) {
+        val intent = Intent(context, FriendMessageActivity::class.java)
+        intent.putExtra("hoTen", res.hoTen)
+        intent.putExtra("receiverId", res.uid)
+        context.startActivity(intent)
     }
 
     override fun getItemCount(): Int {

@@ -70,13 +70,13 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
-        android:buttonTint="@color/black"
         android:id="@+id/checkRememberAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/txtInputLayoutPassword"
         android:layout_marginStart="12dp"
-        android:text="Nhớ mật khẩu" />
+        android:buttonTint="@color/black"
+        android:text="Nhớ tài khoản" />
 
     <Button
         android:id="@+id/btnSignInDangNhap"

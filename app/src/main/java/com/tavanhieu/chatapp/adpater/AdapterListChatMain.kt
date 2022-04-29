@@ -13,6 +13,7 @@ import com.squareup.picasso.Picasso
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.activity.FriendMessageActivity
 import com.tavanhieu.chatapp.m_class.Conversations
+import com.tavanhieu.chatapp.m_class.User
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 
@@ -57,12 +58,17 @@ class AdapterListChatMain(var context: Context): RecyclerView.Adapter<AdapterLis
             holder.txtContentMessItemChatApp.text = "Bạn: ${res.content}"
 
         //Chuyển sang màn hình chat
-        holder.itemView.setOnClickListener {
-            val intent = Intent(context, FriendMessageActivity::class.java)
-            intent.putExtra("hoTen", res.hoTen)
-            intent.putExtra("receiverId", res.uid)
-            context.startActivity(intent)
-        }
+        holder.itemView.setOnClickListener { openMessageActivity(res) }
+        holder.imgUserItemChatApp?.setOnClickListener { openMessageActivity(res) }
+        holder.txtContentMessItemChatApp.setOnClickListener { openMessageActivity(res) }
+        holder.txtUserNameItemChatApp.setOnClickListener { openMessageActivity(res) }
+    }
+
+    private fun openMessageActivity(res: Conversations) {
+        val intent = Intent(context, FriendMessageActivity::class.java)
+        intent.putExtra("hoTen", res.hoTen)
+        intent.putExtra("receiverId", res.uid)
+        context.startActivity(intent)
     }
 
     override fun getItemCount(): Int {

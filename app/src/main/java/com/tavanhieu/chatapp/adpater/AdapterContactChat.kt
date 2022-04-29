@@ -49,12 +49,17 @@ class AdapterContactChat(var context: Context): RecyclerView.Adapter<AdapterCont
         else
             holder.viewStatus.visibility = View.GONE
 
-        holder.itemView.setOnClickListener {
-            val intent = Intent(context, FriendMessageActivity::class.java)
-            intent.putExtra("hoTen", res.hoTen)
-            intent.putExtra("receiverId", res.uid)
-            context.startActivity(intent)
-        }
+        holder.itemView.setOnClickListener { openMessageActivity(res) }
+        holder.txtEmailUser.setOnClickListener { openMessageActivity(res) }
+        holder.imgUser.setOnClickListener { openMessageActivity(res) }
+        holder.txtUserName.setOnClickListener { openMessageActivity(res) }
+    }
+
+    private fun openMessageActivity(res: User) {
+        val intent = Intent(context, FriendMessageActivity::class.java)
+        intent.putExtra("hoTen", res.hoTen)
+        intent.putExtra("receiverId", res.uid)
+        context.startActivity(intent)
     }
 
     override fun getItemCount(): Int {
