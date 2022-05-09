@@ -1,4 +1,4 @@
-package com.tavanhieu.chatapp.dang_nhap_dang_ky
+package com.tavanhieu.chatapp.fragment_dang_nhap_dang_ky
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -11,8 +11,12 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.messaging.FirebaseMessaging
 import com.tavanhieu.chatapp.activity.MainActivity
 import com.tavanhieu.chatapp.R
+import com.tavanhieu.chatapp.m_class.HangSo
 
 class FragmentDangNhap: Fragment() {
     private lateinit var mView: View
@@ -94,6 +98,15 @@ class FragmentDangNhap: Fragment() {
                         mShared.edit().putString("matKhau", password)?.apply()
                     } else {
                         mShared.edit().clear()?.apply()
+                    }
+                    //Gán token cho thiết bị đã cài app:
+                    FirebaseMessaging.getInstance().token.addOnCompleteListener {
+                        if(it.isSuccessful) {
+                            Firebase.database.reference.child(HangSo.KEY_USER)
+                                .child(FirebaseAuth.getInstance().currentUser?.uid!!)
+                                .child("token")
+                                .setValue(it.result)
+                        }
                     }
                     startActivity(Intent(requireContext(), MainActivity::class.java))
                     requireActivity().finish()

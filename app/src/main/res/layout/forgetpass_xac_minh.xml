@@ -4,8 +4,9 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <include layout="@layout/toolbar_forget_pass"
-        android:id="@+id/toolbarForgetPassXacMinh"/>
+    <include
+        android:id="@+id/toolbarForgetPassXacMinh"
+        layout="@layout/toolbar_forget_pass" />
 
     <TextView
         android:id="@+id/txtNameAppForgetPassXacMinh"

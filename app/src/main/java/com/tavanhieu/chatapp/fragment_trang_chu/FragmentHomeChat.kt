@@ -1,4 +1,4 @@
-package com.tavanhieu.chatapp.view_pager
+package com.tavanhieu.chatapp.fragment_trang_chu
 
 import android.annotation.SuppressLint
 import android.os.Bundle
@@ -25,7 +25,7 @@ import com.tavanhieu.chatapp.m_class.Conversations
 import com.tavanhieu.chatapp.m_class.HangSo
 import com.tavanhieu.chatapp.m_class.User
 
-class FragmentHomeChat() : Fragment() {
+class FragmentHomeChat : Fragment() {
     private lateinit var mView: View
     private lateinit var recyclerView: RecyclerView
     private lateinit var rcvUserActive: RecyclerView

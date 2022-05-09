@@ -1,4 +1,4 @@
-package com.tavanhieu.chatapp.dang_nhap_dang_ky
+package com.tavanhieu.chatapp.fragment_dang_nhap_dang_ky
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -101,7 +101,7 @@ class FragmentDangKy: Fragment() {
                     //Thêm dữ liệu vào realTime DB:
                     db.reference.child(HangSo.KEY_USER)
                         .child(mAuth.currentUser?.uid!!)
-                        .setValue(User(email, hoTen, mAuth.currentUser?.uid!!, 0, "", "", null))
+                        .setValue(User(email, hoTen, mAuth.currentUser?.uid!!, 0, "", "", null, null))
                     //Đăng xuất người dùng để nhập mật khẩu ở đăng nhập:
                     mAuth.signOut()
 

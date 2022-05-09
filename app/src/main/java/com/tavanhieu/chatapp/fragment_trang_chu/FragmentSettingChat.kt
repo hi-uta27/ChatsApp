@@ -1,4 +1,4 @@
-package com.tavanhieu.chatapp.view_pager
+package com.tavanhieu.chatapp.fragment_trang_chu
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -63,7 +63,7 @@ class FragmentSettingChat: Fragment() {
                         if (user?.uid == uid) {
                             txtUserName.text = user?.hoTen
                             if(user?.image != null)
-                                Picasso.get().load(user.image).into(imgUser)
+                                Picasso.get().load(user.image).placeholder(R.drawable.user_default).into(imgUser)
                             break
                         }
                     }

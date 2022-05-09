@@ -1,4 +1,4 @@
-package com.tavanhieu.chatapp.dang_nhap_dang_ky
+package com.tavanhieu.chatapp.fragment_dang_nhap_dang_ky
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,14 +8,8 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.ValueEventListener
-import com.google.firebase.database.ktx.database
-import com.google.firebase.ktx.Firebase
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.m_class.HangSo
-import com.tavanhieu.chatapp.m_class.User
 
 class FragmentXacMinhMatKhau: Fragment() {
     private lateinit var mView: View

@@ -23,7 +23,7 @@
                 android:layout_marginBottom="7dp"
                 android:layout_marginEnd="12dp"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="42dp" />
 
            <ProgressBar
                android:id="@+id/progressBarListChatMain"

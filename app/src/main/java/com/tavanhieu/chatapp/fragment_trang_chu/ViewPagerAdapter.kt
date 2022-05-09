@@ -1,4 +1,4 @@
-package com.tavanhieu.chatapp.view_pager
+package com.tavanhieu.chatapp.fragment_trang_chu
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

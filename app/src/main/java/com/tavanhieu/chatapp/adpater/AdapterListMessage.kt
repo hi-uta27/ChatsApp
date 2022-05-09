@@ -104,7 +104,7 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
                 .child(mess.senderId!!).downloadUrl
                 .addOnSuccessListener {
                     if(it != null) {
-                        Picasso.get().load(it).into(mHolder.imgFriend)
+                        Picasso.get().load(it).placeholder(R.drawable.user_default).into(mHolder.imgFriend)
                     }
                 }
                 .addOnFailureListener {}

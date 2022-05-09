@@ -6,12 +6,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".activity.MainActivity">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:layout_marginBottom="5dp"
-        android:id="@+id/ViewPagerLayoutMain"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/FragmentLayoutMain"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@id/bottomNavigationMain"/>
+        android:layout_above="@id/bottomNavigationMain"
+        android:layout_marginBottom="5dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottomNavigationMain"

@@ -15,11 +15,13 @@ import com.google.firebase.storage.FirebaseStorage
 import com.squareup.picasso.Picasso
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.adpater.AdapterListMessage
+import com.tavanhieu.chatapp.fcm_notifications.MyFirebaseMessagingSend
 import com.tavanhieu.chatapp.m_class.Conversations
 import com.tavanhieu.chatapp.m_class.HangSo
 import com.tavanhieu.chatapp.m_class.Message
 import com.tavanhieu.chatapp.m_class.User
 import de.hdodenhof.circleimageview.CircleImageView
+import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -42,14 +44,16 @@ class FriendMessageActivity : UserActiveActivity() {
     private lateinit var mAdapter: AdapterListMessage
     private var arr = ArrayList<Message>()
 
+    private lateinit var nguoiNhan: User
+    private lateinit var nguoiGui: User
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_friend_message)
         anhXa()
-
+        try {
         //Nhận info từ màn hình homeChat:
         hoTenReceiver = intent.getStringExtra("hoTen").toString()
-
         //Lấy id của người gửi và người nhận:
         uidReceiver = intent.getStringExtra("receiverId")!!
         uidSender   = FirebaseAuth.getInstance().currentUser?.uid!!
@@ -64,16 +68,34 @@ class FriendMessageActivity : UserActiveActivity() {
             }
             .addOnFailureListener {}
 
+        //Lấy ra Người gửi/ Người nhận hiện tại:
+        Firebase.database.reference.child(HangSo.KEY_USER)
+            .addValueEventListener(object: ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(data in snapshot.children) {
+                        val user = data.getValue(User::class.java)!!
+                        if(user.uid.equals(uidSender))
+                            nguoiGui = user
+
+                        if(user.uid.equals(uidReceiver))
+                            nguoiNhan = user
+                    }
+                }
+                override fun onCancelled(error: DatabaseError) {}
+            })
+
         //Gán tên lên toolbar, đọc message:
         txtFriend.text = hoTenReceiver
         docMessage()
-
         //Ánh xạ adapter cho message
         mAdapter = AdapterListMessage(this)
         mAdapter.setData(arr)
         rcvListMessage.adapter = mAdapter
 
-        mOnClick()
+        mOnClick()} catch (e: Exception)
+        {
+            Toast.makeText(this, e.message, Toast.LENGTH_SHORT).show()
+        }
     }
 
     private fun anhXa() {
@@ -96,29 +118,6 @@ class FriendMessageActivity : UserActiveActivity() {
         sendMessBottom.setOnClickListener { sendMessage() }
     }
     private fun sendMessage() {
-        var tenNguoiGui: String? = null
-        var anhNguoiGui: String? = null
-        var tenNguoiNhan: String? = null
-        var anhNguoiNhan: String? = null
-        //Lấy ra tên + ảnh Người gửi/ Người nhận hiện tại:
-        Firebase.database.reference.child(HangSo.KEY_USER)
-            .addValueEventListener(object: ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    for(data in snapshot.children) {
-                        val user = data.getValue(User::class.java)!!
-                        if(user.uid.equals(uidSender)) {
-                            tenNguoiGui = user.hoTen
-                            anhNguoiGui = user.image
-                        }
-                        if(user.uid.equals(uidReceiver)) {
-                            tenNguoiNhan = user.hoTen
-                            anhNguoiNhan = user.image
-                        }
-                    }
-                }
-                override fun onCancelled(error: DatabaseError) {}
-            })
-
         val mess = edtMessBottom.text.trim().toString()
         val date = Date()
 
@@ -141,14 +140,16 @@ class FriendMessageActivity : UserActiveActivity() {
                     Firebase.database.reference.child(HangSo.KEY_CONVERSATIONS)
                         .child(uidSender)
                         .child(uidReceiver)
-                        .setValue(Conversations(tenNguoiNhan!!, "Bạn: $mess", date, uidReceiver, anhNguoiNhan))
+                        .setValue(Conversations(nguoiNhan.hoTen!!, "Bạn: $mess", date, uidReceiver, nguoiNhan.image))
 
                     //Add người nhắn cho người nhận:
                     Firebase.database.reference.child(HangSo.KEY_CONVERSATIONS)
                         .child(uidReceiver)
                         .child(uidSender)
-                        .setValue(Conversations(tenNguoiGui!!, mess, date, uidSender, anhNguoiGui))
+                        .setValue(Conversations(nguoiGui.hoTen!!, mess, date, uidSender, nguoiGui.image))
                 }
+            //Gửi thông báo:
+            MyFirebaseMessagingSend.pushNotifications(this, nguoiNhan.token!!, "${nguoiGui.hoTen!!} gửi tới ${nguoiNhan.hoTen!!}", mess)
         }
         //Sau khi gửi xong xóa nội dung nhắn trước đó:
         edtMessBottom.text = null

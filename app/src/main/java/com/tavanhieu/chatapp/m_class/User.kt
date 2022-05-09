@@ -10,9 +10,11 @@ class User: Serializable {
     var gioiTinh: String? = null
     var available: Int? = null
     var image: String? = null
+    var token: String? = null
 
     constructor()
-    constructor(taiKhoan: String, hoTen: String, uid: String, available: Int, ngaySinh: String, gioiTinh: String, image: String?) {
+    constructor(taiKhoan: String, hoTen: String, uid: String, available: Int,
+                ngaySinh: String, gioiTinh: String, image: String?, token: String?) {
         this.taiKhoan   = taiKhoan
         this.hoTen      = hoTen
         this.uid        = uid
@@ -20,6 +22,7 @@ class User: Serializable {
         this.ngaySinh   = ngaySinh
         this.gioiTinh   = gioiTinh
         this.image      = image
+        this.token      = token
     }
     //Cập nhật dữ liệu:
     constructor(hoTen: String, ngaySinh: String, gioiTinh: String) {

@@ -3,7 +3,7 @@ package com.tavanhieu.chatapp.activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.tavanhieu.chatapp.R
-import com.tavanhieu.chatapp.dang_nhap_dang_ky.FragmentDangNhap
+import com.tavanhieu.chatapp.fragment_dang_nhap_dang_ky.FragmentDangNhap
 
 class DangNhapDangKyActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
