@@ -42,12 +42,14 @@ class AdapterListCaiDat(var context: Context): RecyclerView.Adapter<AdapterListC
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         val item = arr[position]
 
-        holder.iconItem.setImageResource(item.img)
-        holder.nameItem.text = item.text
+        try {
+            holder.iconItem.setImageResource(item.img)
+            holder.nameItem.text = item.text
 
-        holder.itemView.setOnClickListener { openItemCaiDat(position) }
-        holder.nameItem.setOnClickListener { openItemCaiDat(position) }
-        holder.iconItem.setOnClickListener { openItemCaiDat(position) }
+            holder.itemView.setOnClickListener { openItemCaiDat(position) }
+            holder.nameItem.setOnClickListener { openItemCaiDat(position) }
+            holder.iconItem.setOnClickListener { openItemCaiDat(position) }
+        }catch (ex: Exception) {}
     }
 
     private fun openItemCaiDat(position: Int) {

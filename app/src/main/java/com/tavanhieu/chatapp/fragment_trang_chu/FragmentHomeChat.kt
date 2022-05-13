@@ -1,13 +1,16 @@
 package com.tavanhieu.chatapp.fragment_trang_chu
 
 import android.annotation.SuppressLint
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.SearchView
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -56,19 +59,18 @@ class FragmentHomeChat : Fragment() {
         mAdapterUserActive.setData(arrUserActive)
         rcvUserActive.adapter = mAdapterUserActive
 
-        //Back Pressed: (Đóng search nếu đang mở)
-        activity?.onBackPressedDispatcher?.addCallback(requireActivity(), object: OnBackPressedCallback(true) {
-            override fun handleOnBackPressed() {
-                if (!mSearchView.isIconified) {
-                    mSearchView.isIconified = true
-                    recyclerView.adapter = mAdapterConversation
-                } else {
-                    isEnabled = false
-                    activity?.onBackPressed()
-                }
-            }
-        })
-
+        //Back Pressed: (Đóng search nếu đang mở) //Không hoạt động...
+//            activity?.onBackPressedDispatcher?.addCallback(requireActivity(), object: OnBackPressedCallback(true) {
+//                override fun handleOnBackPressed() {
+//                    //Đóng search nếu đang mở:
+//                    if (!mSearchView.isIconified) {
+//                        mSearchView.isIconified = true
+//                        mSearchView.onActionViewCollapsed()
+//                        recyclerView.adapter = mAdapterConversation
+//                    } else
+//                        activity?.onBackPressed()
+//                }
+//            })
         mOnClick()
         return mView
     }
@@ -88,13 +90,15 @@ class FragmentHomeChat : Fragment() {
                                     //Lấy danh sách search:
                                     for(data in snapshot.children) {
                                         val user = data.getValue(User::class.java)
-                                        if(user!!.hoTen.equals(newText, true))
+                                        if(newText != "" && user!!.hoTen!!.contains(newText.toString(), true))
                                             arrSearch.add(user)
                                     }
                                     //Ánh xạ view adapter:
-                                    val mAdapter2 = AdapterContactChat(requireContext())
-                                    mAdapter2.setData(arrSearch)
-                                    recyclerView.adapter = mAdapter2
+                                    try {
+                                        val mAdapter2 = AdapterContactChat(requireContext())
+                                        mAdapter2.setData(arrSearch)
+                                        recyclerView.adapter = mAdapter2
+                                    } catch (e: Exception) {}
                                 }
                                 override fun onCancelled(error: DatabaseError) {}
                             })

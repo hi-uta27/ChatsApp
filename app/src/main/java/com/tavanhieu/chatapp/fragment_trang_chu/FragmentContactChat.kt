@@ -56,7 +56,7 @@ class FragmentContactChat: Fragment() {
                     }
                     mAdapter.notifyDataSetChanged()
                     //Sắp xếp tăng dần theo tên:
-                    arr.sortBy { obj -> obj.hoTen }
+                    arr.sortBy { obj1 -> obj1.hoTen }
                     progressBar.visibility = View.GONE
                 }
                 override fun onCancelled(error: DatabaseError) { }
