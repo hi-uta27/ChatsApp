@@ -135,7 +135,7 @@ class FragmentHomeChat : Fragment() {
                     arr.add(userConversations!!)
                 }
                 mAdapterConversation.notifyDataSetChanged()
-                arr.sortByDescending { item -> item.timeSent }
+                arr.sortByDescending { item -> item.thoiGianGui }
                 progressBar.visibility = View.GONE
             }
             override fun onCancelled(error: DatabaseError) {}
@@ -150,7 +150,7 @@ class FragmentHomeChat : Fragment() {
                     arrUserActive.clear()
                     for(data in snapshot.children) {
                         val user = data.getValue(User::class.java)
-                        if(user?.available == 1 && user.uid != uid) {
+                        if(user?.trangThaiHoatDong == 1 && user.uid != uid) {
                             arrUserActive.add(user)
                         }
                     }

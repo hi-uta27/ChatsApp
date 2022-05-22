@@ -46,16 +46,16 @@ class AdapterListChatMain(var context: Context): RecyclerView.Adapter<AdapterLis
 
         holder.viewStatusUserItemChatApp.visibility = View.GONE
         holder.txtUserNameItemChatApp.text = res.hoTen
-        holder.txtTimeItemChatApp.text = simpleDateFormat.format(res.timeSent!!)
+        holder.txtTimeItemChatApp.text = simpleDateFormat.format(res.thoiGianGui!!)
         //Hiển thị ảnh:
-        if(res.image != null)
-            Picasso.get().load(res.image).into(holder.imgUserItemChatApp)
+        if(res.anh != null)
+            Picasso.get().load(res.anh).into(holder.imgUserItemChatApp)
 
         //Nội dung nhắn:
         if(FirebaseAuth.getInstance().currentUser?.uid != res.uid)
-            holder.txtContentMessItemChatApp.text = res.content
+            holder.txtContentMessItemChatApp.text = res.noiDungTinNhan
         else
-            holder.txtContentMessItemChatApp.text = "Bạn: ${res.content}"
+            holder.txtContentMessItemChatApp.text = "Bạn: ${res.noiDungTinNhan}"
 
         //Chuyển sang màn hình chat
         holder.itemView.setOnClickListener { openMessageActivity(res) }

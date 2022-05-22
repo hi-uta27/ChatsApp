@@ -41,8 +41,9 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
         return arr.size
     }
 
+    //Trả về loại view tin nhắn khác nhau khi uid là người gửi hoặc người nhận
     override fun getItemViewType(position: Int): Int {
-        return if(FirebaseAuth.getInstance().currentUser?.uid.equals(arr[position].senderId)) {
+        return if(FirebaseAuth.getInstance().currentUser?.uid.equals(arr[position].uid)) {
             HangSo.GUI_MESSAGE
         } else {
             HangSo.NHAN_MESSAGE
@@ -65,13 +66,13 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
         //Định dạng ngày và giờ gửi:
         val simpleDateFormat = SimpleDateFormat("HH:mm MMMM dd, yyyy")
 
-        if(getItemViewType(position) == HangSo.GUI_MESSAGE) {
+        if(getItemViewType(position) == HangSo.GUI_MESSAGE) { //Nếu là người gửi
             var checkTimeSent = true
             val mHolder = (holder as MySentViewHolder)
 
             //Gán dữ liệu:
-            mHolder.txtMyMess.text = mess.mess
-            mHolder.txtTime.text   = simpleDateFormat.format(mess.time!!)
+            mHolder.txtMyMess.text = mess.anh
+            mHolder.txtTime.text   = simpleDateFormat.format(mess.thoiGianGui!!)
             //Xem thời gian gửi tin:
             holder.txtMyMess.setOnClickListener {
                 if(checkTimeSent) {
@@ -82,13 +83,13 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
                     mHolder.txtTime.visibility = View.GONE
                 }
             }
-        } else {
+        } else { //Nếu là người nhận:
             var checkTimeSent = true
             val mHolder = (holder as MyReceiverViewHolder)
 
             //Gán dữ liệu:
-            mHolder.txtFriend.text = mess.mess
-            mHolder.txtTime.text   = simpleDateFormat.format(mess.time!!)
+            mHolder.txtFriend.text = mess.anh
+            mHolder.txtTime.text   = simpleDateFormat.format(mess.thoiGianGui!!)
             //Xem thời gian gửi tin:
             holder.txtFriend.setOnClickListener {
                 if(checkTimeSent) {
@@ -101,7 +102,7 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
             }
             //Load ảnh người nhận:
             FirebaseStorage.getInstance().reference.child(HangSo.KEY_USER)
-                .child(mess.senderId!!).downloadUrl
+                .child(mess.uid!!).downloadUrl
                 .addOnSuccessListener {
                     if(it != null) {
                         Picasso.get().load(it).placeholder(R.drawable.user_default).into(mHolder.imgFriend)

@@ -1,5 +1,4 @@
 package com.tavanhieu.chatapp.m_class
-
 import java.io.Serializable
 
 class User: Serializable {
@@ -8,21 +7,21 @@ class User: Serializable {
     var uid: String? = null
     var ngaySinh: String? = null
     var gioiTinh: String? = null
-    var available: Int? = null
-    var image: String? = null
+    var trangThaiHoatDong: Int? = null
+    var anh: String? = null
     var token: String? = null
 
     constructor()
-    constructor(taiKhoan: String, hoTen: String, uid: String, available: Int,
-                ngaySinh: String, gioiTinh: String, image: String?, token: String?) {
+    constructor(taiKhoan: String, hoTen: String, uid: String, trangThaiHoatDong: Int,
+                ngaySinh: String, gioiTinh: String, anh: String?, token: String?) {
         this.taiKhoan   = taiKhoan
         this.hoTen      = hoTen
         this.uid        = uid
-        this.available  = available
         this.ngaySinh   = ngaySinh
         this.gioiTinh   = gioiTinh
-        this.image      = image
+        this.anh        = anh
         this.token      = token
+        this.trangThaiHoatDong  = trangThaiHoatDong
     }
     //Cập nhật dữ liệu:
     constructor(hoTen: String, ngaySinh: String, gioiTinh: String) {

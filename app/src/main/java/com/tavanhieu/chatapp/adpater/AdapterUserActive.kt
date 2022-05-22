@@ -38,8 +38,8 @@ class AdapterUserActive(var context: Context): RecyclerView.Adapter<AdapterUserA
 
         holder.txtNameUserActive.visibility = View.VISIBLE
         holder.txtNameUserActive.text = user.hoTen
-        if(user.image != null)
-            Picasso.get().load(user.image).into(holder.imgUserActive)
+        if(user.anh != null)
+            Picasso.get().load(user.anh).into(holder.imgUserActive)
 
         holder.itemView.setOnClickListener { openMessageActivity(user) }
         holder.imgUserActive.setOnClickListener { openMessageActivity(user) }

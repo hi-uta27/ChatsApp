@@ -40,11 +40,11 @@ class AdapterContactChat(var context: Context): RecyclerView.Adapter<AdapterCont
         holder.txtUserName.text = res.hoTen
         holder.txtEmailUser.text = res.taiKhoan
         //Ảnh người dùng: (Error: Không hiển thị ảnh???)
-        if(res.image != null)
-            Picasso.get().load(res.image).into(holder.imgUser)
+        if(res.anh != null)
+            Picasso.get().load(res.anh).into(holder.imgUser)
 
         //Trạng thái hoạt động
-        if(res.available == 1)
+        if(res.trangThaiHoatDong == 1)
             holder.viewStatus.visibility = View.VISIBLE
         else
             holder.viewStatus.visibility = View.GONE

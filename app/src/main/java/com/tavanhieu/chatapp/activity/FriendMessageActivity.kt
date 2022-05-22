@@ -140,13 +140,13 @@ class FriendMessageActivity : UserActiveActivity() {
                     Firebase.database.reference.child(HangSo.KEY_CONVERSATIONS)
                         .child(uidSender)
                         .child(uidReceiver)
-                        .setValue(Conversations(nguoiNhan.hoTen!!, "Bạn: $mess", date, uidReceiver, nguoiNhan.image))
+                        .setValue(Conversations(nguoiNhan.hoTen!!, "Bạn: $mess", date, uidReceiver, nguoiNhan.anh))
 
                     //Add người nhắn cho người nhận:
                     Firebase.database.reference.child(HangSo.KEY_CONVERSATIONS)
                         .child(uidReceiver)
                         .child(uidSender)
-                        .setValue(Conversations(nguoiGui.hoTen!!, mess, date, uidSender, nguoiGui.image))
+                        .setValue(Conversations(nguoiGui.hoTen!!, mess, date, uidSender, nguoiGui.anh))
                 }
             //Gửi thông báo:
             MyFirebaseMessagingSend.pushNotifications(this, nguoiNhan.token!!, "${nguoiGui.hoTen!!} gửi tới ${nguoiNhan.hoTen!!}", mess)

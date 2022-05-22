@@ -61,8 +61,8 @@ class ThongTinCaNhan: UserActiveActivity() {
                             edtGmail.setText(user.taiKhoan)
                             edtHoTen.setText(user.hoTen)
                             edtNgaySinh.setText(user.ngaySinh)
-                            if(user.image != null)
-                                Picasso.get().load(user.image).placeholder(R.drawable.user_default).into(imgUser)
+                            if(user.anh != null)
+                                Picasso.get().load(user.anh).placeholder(R.drawable.user_default).into(imgUser)
                             when {
                                 user.gioiTinh == "" -> {
                                     cbNam.isChecked = false

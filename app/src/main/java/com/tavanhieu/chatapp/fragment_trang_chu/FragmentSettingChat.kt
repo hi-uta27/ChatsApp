@@ -62,8 +62,8 @@ class FragmentSettingChat: Fragment() {
                         val user = data.getValue(User::class.java)
                         if (user?.uid == uid) {
                             txtUserName.text = user?.hoTen
-                            if(user?.image != null)
-                                Picasso.get().load(user.image).placeholder(R.drawable.user_default).into(imgUser)
+                            if(user?.anh != null)
+                                Picasso.get().load(user.anh).placeholder(R.drawable.user_default).into(imgUser)
                             break
                         }
                     }
