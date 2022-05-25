@@ -39,7 +39,7 @@ class AdapterContactChat(var context: Context): RecyclerView.Adapter<AdapterCont
         val res = arr[position]
         holder.txtUserName.text = res.hoTen
         holder.txtEmailUser.text = res.taiKhoan
-        //Ảnh người dùng: (Error: Không hiển thị ảnh???)
+        //Ảnh người dùng:
         if(res.anh != null)
             Picasso.get().load(res.anh).into(holder.imgUser)
 

@@ -71,7 +71,7 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
             val mHolder = (holder as MySentViewHolder)
 
             //Gán dữ liệu:
-            mHolder.txtMyMess.text = mess.anh
+            mHolder.txtMyMess.text = mess.noiDungTinNhan
             mHolder.txtTime.text   = simpleDateFormat.format(mess.thoiGianGui!!)
             //Xem thời gian gửi tin:
             holder.txtMyMess.setOnClickListener {
@@ -88,7 +88,7 @@ class AdapterListMessage(var context: Context): RecyclerView.Adapter<RecyclerVie
             val mHolder = (holder as MyReceiverViewHolder)
 
             //Gán dữ liệu:
-            mHolder.txtFriend.text = mess.anh
+            mHolder.txtFriend.text = mess.noiDungTinNhan
             mHolder.txtTime.text   = simpleDateFormat.format(mess.thoiGianGui!!)
             //Xem thời gian gửi tin:
             holder.txtFriend.setOnClickListener {

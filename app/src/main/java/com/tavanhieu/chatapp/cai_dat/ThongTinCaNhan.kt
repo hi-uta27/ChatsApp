@@ -184,7 +184,7 @@ class ThongTinCaNhan: UserActiveActivity() {
                 .child(uid).downloadUrl
                 .addOnSuccessListener {
                     //Lưu vào realTime:
-                    db.child(uid).child("image").setValue(it.toString())
+                    db.child(uid).child("anh").setValue(it.toString())
                     Toast.makeText(this, "Cập nhật ảnh thành công", Toast.LENGTH_SHORT).show()
                 }
                 .addOnFailureListener {

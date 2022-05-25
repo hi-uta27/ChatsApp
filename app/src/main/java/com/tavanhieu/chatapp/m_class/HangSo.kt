@@ -7,7 +7,7 @@ object HangSo {
     const val KEY_USER = "user"
     const val KEY_CHATS_TTCN = "chatsTTCN"
     const val KEY_MESSAGE = "message"
-    const val KEY_AVAILABLE = "available"
+    const val KEY_AVAILABLE = "trangThaiHoatDong"
     const val REGEX_EMAIL = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+"
     const val REQUEST_CODE_GALLERY = 1111
     //Notifications:
@@ -15,5 +15,5 @@ object HangSo {
     const val CHANEL_NAME = "com.tavanhieu.chatapp"
     const val SERVER_URL = "https://fcm.googleapis.com/fcm/send"
     const val SERVER_KEY = "AAAAvBq4Gkw:APA91bGe5HVryvgWLqyW8zSV31O-2LuBhJhJpulwSYE5DzBwXEPqIBxWpEOwjZSZ43JpuumdWCtSxTDOwqgUc2Tbc6dBSJNsyUoVRoe02Trg2ugiNXRWTKiH5AzolHm_PewZH1UGtImK"
-
+    //Thêm xóa, cấu hình code cho firebase tối ưu hơn trong cách sử dụng...
 }

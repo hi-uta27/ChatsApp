@@ -13,7 +13,6 @@ import com.squareup.picasso.Picasso
 import com.tavanhieu.chatapp.R
 import com.tavanhieu.chatapp.activity.FriendMessageActivity
 import com.tavanhieu.chatapp.m_class.Conversations
-import com.tavanhieu.chatapp.m_class.User
 import de.hdodenhof.circleimageview.CircleImageView
 import java.text.SimpleDateFormat
 
