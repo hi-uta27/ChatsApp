@@ -26,6 +26,7 @@ import com.tavanhieu.chatapp.m_class.Message
 import com.tavanhieu.chatapp.m_class.User
 import de.hdodenhof.circleimageview.CircleImageView
 import java.lang.Exception
+import java.lang.NullPointerException
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -170,7 +171,9 @@ class FriendMessageActivity : UserActiveActivity() {
                         .setValue(Conversations(nguoiGui.hoTen!!, mess, date, uidSender, nguoiGui.anh))
                 }
             //Gửi thông báo:
-            MyFirebaseMessagingSend.pushNotifications(this, nguoiNhan.token!!, "${nguoiGui.hoTen!!} gửi tới ${nguoiNhan.hoTen!!}", mess)
+            try {
+                MyFirebaseMessagingSend.pushNotifications(this, nguoiNhan.token!!, "${nguoiGui.hoTen!!} gửi tới ${nguoiNhan.hoTen!!}", mess)
+            } catch (ex: NullPointerException) {}
         }
         //Sau khi gửi xong xóa nội dung nhắn trước đó:
         edtMessBottom.text = null
