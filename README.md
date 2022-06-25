@@ -2,8 +2,8 @@
 ## This's my project for TTCN ❤️ (●'◡'●) ❤️
 ### With two members: Tạ Văn Hiếu - Hoàng Trần Minh Đức
 This's a project uses kotlin that we developing from: 17/03/2022
-[You can download my app in here!!!](https://drive.google.com/file/d/13F0tKBHIQdhTeixJ9dCWsl1w8JWOBms2/view?usp=sharing)
-The image for app:
+[You can download my app in here!!!](https://drive.google.com/file/d/13F0tKBHIQdhTeixJ9dCWsl1w8JWOBms2/view?usp=sharing) <br/>
+The image for app: <br/>
 <img src="https://user-images.githubusercontent.com/71754731/175779598-fb5359fc-ce2b-48a1-8116-0231c14108d6.png" width="200" />
 <img src="https://user-images.githubusercontent.com/71754731/175779609-1a90807a-7237-407c-9a8b-40aa651bad57.png" width="200" />
 <img src="https://user-images.githubusercontent.com/71754731/175779616-56e967b8-7ca5-43c2-bd58-0fdbcb2821d9.png" width="200" />
