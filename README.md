@@ -1,7 +1,6 @@
 # ChatsApp ^_^
 ## This's my project for TTCN ❤️ (●'◡'●) ❤️
-### With two members: Tạ Văn Hiếu - Hoàng Trần Minh Đức
-This's a project uses kotlin that we developing from: 17/03/2022
+This's a project uses kotlin that my developed from: 17/03/2022. <br/>
 [You can download my app in here!!!](https://drive.google.com/file/d/13F0tKBHIQdhTeixJ9dCWsl1w8JWOBms2/view?usp=sharing) <br/>
 The image for app: <br/>
 <img src="https://user-images.githubusercontent.com/71754731/175779598-fb5359fc-ce2b-48a1-8116-0231c14108d6.png" width="200" />
