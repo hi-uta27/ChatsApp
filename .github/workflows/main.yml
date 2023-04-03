@@ -11,18 +11,14 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-    - uses: actions/checkout@v3
-    - uses: ./
+    - uses: actions/checkout@v2
+    - uses: ChatsApp/setup-kotlin@main
       with:
-        version: 1.8.10
+        version: 1.7.20
         install-native: true
     - run: kotlinc -version
     - run: kotlinc-native -version
-    - run: echo 'fun main() {println("Hello Kotlin/Native!")}' > hello.kt
-    - run: kotlinc-native hello.kt
-    - run: ./program.exe
-      if: ${{ matrix.os == 'windows-latest' }}
-    - run: ./program.kexe
-      if: ${{ matrix.os != 'windows-latest' }}
+    - run: kotlinc myProgram.kt -include-runtime -d /tmp/hello.jar; java -jar /tmp/hello.jar
+    - run: kotlin myScript.main.kts
 
     
